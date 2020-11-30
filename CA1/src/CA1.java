@@ -14,6 +14,7 @@ import javax.swing.JPasswordField;
 // Fabiola, I set the Frames to "frame.setSize (500, 400)" width and size
 // To make it easier, you can use the structured pages I created, I will try to clean
 // the code to make it easy understanding
+//**Created folder libs that i included JPlanner (calender) source**.
 
 public class CA1 extends JPanel {
     
