@@ -26,46 +26,70 @@ import javax.swing.JTextField;
 public class CLIENT extends JFrame implements ActionListener {
     
     JPanel panel;
-    JLabel user_label, password_label, message;
-    JTextField userName_text;
-    JPasswordField password_text;
+    JLabel user_label, password_label, password_label2, message, fullName, email, phoneNumber ;
+    JTextField userName_text, fullNameText, emailText, phoneNumberText ;
+    JPasswordField password_text, password_text2;
     JButton submit, cancel;
     JButton newUser;
     private ActionListener eventHandler;
      
     public CLIENT()
-    {user_label = new JLabel();
-        user_label.setText("User Name :");
-        userName_text = new JTextField(); 
+    {
+        //Full name
+        
+        fullName = new JLabel();
+        fullName.setText("Full Name:");
+        fullNameText = new JTextField(); 
         
         
-        // Password
+        // email
 
+        email = new JLabel();
+        email.setText("Email :");
+        emailText = new JTextField();
+        
+        //phone Number
+        
+        phoneNumber = new JLabel();
+        phoneNumber.setText("Phone Number :");
+        phoneNumberText = new JTextField();
+        
         password_label = new JLabel();
-        password_label.setText("Password :");
+        password_label.setText("PassWord :");
         password_text = new JPasswordField();
+        
+        password_label2 = new JLabel();
+        password_label2.setText("Confirm PassWord :");
+        password_text2 = new JPasswordField();
+        
 
         // Submit
 
         submit = new JButton("SUBMIT");
-        newUser = new JButton("NEW USER");
+        //newUser = new JButton("NEW USER");
         
         submit.addActionListener(eventHandler);
-        newUser.addActionListener(eventHandler);
+       //newUser.addActionListener(eventHandler);
         
 
         panel = new JPanel(new GridLayout(10, 10));
         
 
-        panel.add(user_label);
-        panel.add(userName_text);
+        panel.add(fullName);
+        panel.add(fullNameText);
+        panel.add(email);
+        panel.add(emailText);
+        panel.add(phoneNumber);
+        panel.add(phoneNumberText);
         panel.add(password_label);
         panel.add(password_text);
+        panel.add(password_label2);
+        panel.add(password_text2);
 
         message = new JLabel();
         panel.add(message);
         panel.add(submit);
-        panel.add(newUser);
+        //panel.add(newUser);
         
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
@@ -84,9 +108,22 @@ public class CLIENT extends JFrame implements ActionListener {
 
    
     public void actionPerformed(ActionEvent e) {
-      String nameUserText = userName_text.getText();
-      String passordUserText = password_text.getText();
-        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if (e.getSource() == submit) {
+//                NewClient nc = new NewClient();
+//                nc.setVisible(true);
+//                dispose();
+                
+                
+                
+                
+                
+            }
+            
+           else if (e.getSource() == newUser) {
+                SERVICEPROVIDER nc = new SERVICEPROVIDER();
+                  nc.setVisible(true);
+                  dispose();
+            }
     }
 
     
