@@ -1,5 +1,6 @@
+
 /**
- * 
+ *
  * @author farleyreis Fabiola
  */
 import javax.swing.*;
@@ -7,7 +8,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class NewClient extends JFrame implements ActionListener {
+public class LOGINPAGE extends JFrame implements ActionListener {
 
     Container container = getContentPane();
     JLabel userLabel = new JLabel("USERNAME");
@@ -18,13 +19,16 @@ public class NewClient extends JFrame implements ActionListener {
     JButton CLIENTButton = new JButton("NEW ACCOUNT");
     JCheckBox showPassword = new JCheckBox("Show Password");
 
-
-    NewClient() {
+    LOGINPAGE() {
         setLayoutManager();
         setLocationAndSize();
         addComponentsToContainer();
         addActionEvent();
 
+    }
+
+    LOGINPAGE(CA1.EventHandler aThis, boolean b) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     public void setLayoutManager() {
@@ -40,8 +44,6 @@ public class NewClient extends JFrame implements ActionListener {
         loginButton.setBounds(50, 300, 100, 30);
         CLIENTButton.setBounds(200, 300, 130, 30);
         setSize(500, 400);
-
-
     }
 
     public void addComponentsToContainer() {
@@ -60,7 +62,6 @@ public class NewClient extends JFrame implements ActionListener {
         showPassword.addActionListener(this);
     }
 
-
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == loginButton) {
@@ -68,20 +69,20 @@ public class NewClient extends JFrame implements ActionListener {
             String pwdText;
             userText = userTextField.getText();
             pwdText = passwordField.getText();
-            if (userText.equalsIgnoreCase("fa") && pwdText.equalsIgnoreCase("fa")) {
+            if (userText.equalsIgnoreCase("") && pwdText.equalsIgnoreCase("")) {
                 AppointmentBook nc = new AppointmentBook();
                 nc.setVisible(true);
                 dispose();
-                //JOptionPane.showMessageDialog(this, "Login Successful");
+                JOptionPane.showMessageDialog(this, "Login Successful");
             } else {
                 JOptionPane.showMessageDialog(this, "Invalid Username or Password");
             }
 
         }
         if (e.getSource() == CLIENTButton) {
-           CLIENT nc = new CLIENT();
-                nc.setVisible(true);
-                dispose();
+            NCLIENT nc = new NCLIENT();
+            nc.setVisible(true);
+            dispose();
         }
         if (e.getSource() == showPassword) {
             if (showPassword.isSelected()) {
@@ -90,20 +91,7 @@ public class NewClient extends JFrame implements ActionListener {
                 passwordField.setEchoChar('*');
             }
 
-
         }
-    }
-
-}
-public class Login {
-    public static void main(String[] a) {
-        NewClient frame = new NewClient();
-        frame.setTitle("Login Form");
-        frame.setVisible(true);
-        frame.setBounds(10, 10, 370, 600);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setResizable(false);
-
     }
 
 }
