@@ -72,7 +72,7 @@ public class CA1 extends JPanel {
                
                 ps.setVisible(true);
                 
-                  dispose();
+                  //dispose();
 
             } // here your part .. of button2 SERVICEPROVIDER will enter.
             // my old condition is in the SERVICEPROVIDER class, you can copy all code from the NewCliente class and put it in

@@ -57,34 +57,26 @@ public class AppointmentBook extends JFrame implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-//        if (e.getSource() == loginButton) {
-//            String userText;
-//            String pwdText;
-//            userText = userTextField.getText();
-//            pwdText = passwordField.getText();
-//            if (userText.equalsIgnoreCase("") && pwdText.equalsIgnoreCase("")) {
-//                AppointmentBook nc = new AppointmentBook();
-//                nc.setVisible(true);
-//                dispose();
-//                JOptionPane.showMessageDialog(this, "Login Successful");
-//            } else {
-//                JOptionPane.showMessageDialog(this, "Invalid Username or Password");
-//            }
-//
-//        }
-//        if (e.getSource() == CLIENTButton) {
-//            NCLIENT nc = new NCLIENT();
-//            nc.setVisible(true);
-//            dispose();
-//        }
-//        if (e.getSource() == showPassword) {
-//            if (showPassword.isSelected()) {
-//                passwordField.setEchoChar((char) 0);
-//            } else {
-//                passwordField.setEchoChar('*');
-//            }
-//
-//        }
+        if (e.getSource() == b1) {
+            
+              BOOKS nc = new BOOKS();
+                nc.setVisible(true);
+                dispose();
+                JOptionPane.showMessageDialog(this, "Login Successful");
+            } 
+
+        
+    if (e.getSource() == b2) {
+            NCLIENT nc = new NCLIENT();
+            nc.setVisible(true);
+            dispose();
+        }
+        if (e.getSource() == b3) {
+            } else {
+            }
+
+        }
+    
     }
 
-}
+
