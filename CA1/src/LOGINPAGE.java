@@ -70,7 +70,7 @@ public class LOGINPAGE extends JFrame implements ActionListener {
             userText = userTextField.getText();
             pwdText = passwordField.getText();
             if (userText.equalsIgnoreCase("") && pwdText.equalsIgnoreCase("")) {
-                AppointmentBook nc = new AppointmentBook();
+                CONTROLLER nc = new CONTROLLER();
                 nc.setVisible(true);
                 dispose();
                 JOptionPane.showMessageDialog(this, "Login Successful");

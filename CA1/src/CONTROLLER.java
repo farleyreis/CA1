@@ -8,7 +8,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class AppointmentBook extends JFrame implements ActionListener {
+public class CONTROLLER extends JFrame implements ActionListener {
 
     Container container = getContentPane();
 
@@ -17,7 +17,7 @@ public class AppointmentBook extends JFrame implements ActionListener {
     JButton b3 = new JButton("SETTINGS");
     JButton b4 = new JButton("FEEDBACKS & PAYMENTS");
 
-    AppointmentBook() {
+    CONTROLLER() {
         setLayoutManager();
         setLocationAndSize();
         addComponentsToContainer();
@@ -72,6 +72,10 @@ public class AppointmentBook extends JFrame implements ActionListener {
             dispose();
         }
         if (e.getSource() == b3) {
+                SETTINGS nc = new SETTINGS();
+                nc.setVisible(true);
+                dispose();
+            
             } else {
             }
 
