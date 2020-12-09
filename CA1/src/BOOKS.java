@@ -28,7 +28,7 @@ public class BOOKS extends JFrame implements ActionListener{
         // frame.setLocation(430, 100);
 
         JPanel panel = new JPanel();
-        panel = new JPanel(new GridLayout(6, 6));
+        panel = new JPanel(new GridLayout(8, 8));
 
         frame.add(panel);
 
