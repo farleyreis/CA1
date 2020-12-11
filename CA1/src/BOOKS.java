@@ -80,19 +80,22 @@ public class BOOKS extends JFrame implements ActionListener{
         panel.add(btn2);
 
         frame.setVisible(true); 
+        btn2.addActionListener(this);
+        btn.addActionListener(this);
+        btn.addActionListener(eventHandler);
         
     }
 
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == btn) {
-                CONTROLLER nc = new CONTROLLER();
+                CA1 nc = new CA1();
                 nc.setVisible(true);
-                dispose();
+                //dispose();
 
         } else if (e.getSource() == btn2) {
             SERVICEPROVIDER nc = new SERVICEPROVIDER();
             nc.setVisible(true);
-            dispose();
+            //dispose();
         }
     }
         
@@ -101,9 +104,9 @@ public class BOOKS extends JFrame implements ActionListener{
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     
 
-    public void setVisible(boolean b) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+//    public void setVisible(boolean b) {
+//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+//    }
 
   
 

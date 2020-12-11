@@ -31,14 +31,14 @@ public class SERVICEPROVIDER extends JFrame implements ActionListener {
      
     public SERVICEPROVIDER()
     {user_label = new JLabel();
-        user_label.setText("User Name :");
+        user_label.setText("EMAIL :");
         userName_text = new JTextField();
         
         
         // Password
 
         password_label = new JLabel();
-        password_label.setText("Password :");
+        password_label.setText("PASSWORD :");
         password_text = new JPasswordField();
 
         // Submit

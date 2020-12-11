@@ -4,6 +4,7 @@
  * @author farleyreis Fabiola
  */
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -13,18 +14,23 @@ import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
 public class NCLIENT extends JFrame implements ActionListener {
+    
+    
+
+    
 
     JPanel panel;
     JLabel user_label, password_label, password_label2, message, fullName, email, phoneNumber;
     JTextField userName_text, fullNameText, emailText, phoneNumberText;
     JPasswordField password_text, password_text2;
-    JButton submit, cancel;
-    JButton newUser;
+    JButton submit, cancel, home;
+   
     private ActionListener eventHandler;
 
     public NCLIENT() {
@@ -54,10 +60,11 @@ public class NCLIENT extends JFrame implements ActionListener {
 
         // Submit
         submit = new JButton("SUBMIT");
+        home = new JButton("HOME");
         //newUser = new JButton("NEW USER");
 
         submit.addActionListener(eventHandler);
-        //newUser.addActionListener(eventHandler);
+        home.addActionListener(eventHandler);
 
         panel = new JPanel(new GridLayout(10, 10));
 
@@ -75,29 +82,38 @@ public class NCLIENT extends JFrame implements ActionListener {
         message = new JLabel();
         panel.add(message);
         panel.add(submit);
+        panel.add(home);
         //panel.add(newUser);
-
+        home.setForeground(Color.red);
+        home.setOpaque(true);
         
         // Adding the listeners to components..
         submit.addActionListener(this);
+        home.addActionListener(this);
         add(panel, BorderLayout.CENTER);
+        
         setTitle("Please Login Here !");
         setSize(500, 400);
         setVisible(true);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         panel.setBorder(BorderFactory.createTitledBorder("SOS BEAUTY CLIENT LOGIN"));
+        
 
     }
+    
 
     public void actionPerformed(ActionEvent e) {
+        
+        
         if (e.getSource() == submit) {
 //                NewClient nc = new NewClient();
 //                nc.setVisible(true);
 //                dispose();
+                JOptionPane.showMessageDialog(this, "Thank you for your registration!");
 
-        } else if (e.getSource() == newUser) {
-            SERVICEPROVIDER nc = new SERVICEPROVIDER();
+        } else if (e.getSource() == home) {
+            CA1 nc = new CA1();
             nc.setVisible(true);
             dispose();
         }

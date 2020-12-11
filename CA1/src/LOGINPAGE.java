@@ -11,7 +11,7 @@ import java.awt.event.ActionListener;
 public class LOGINPAGE extends JFrame implements ActionListener {
 
     Container container = getContentPane();
-    JLabel userLabel = new JLabel("USERNAME");
+    JLabel userLabel = new JLabel("EMAIL");
     JLabel passwordLabel = new JLabel("PASSWORD");
     JTextField userTextField = new JTextField();
     JPasswordField passwordField = new JPasswordField();
@@ -61,6 +61,8 @@ public class LOGINPAGE extends JFrame implements ActionListener {
         CLIENTButton.addActionListener(this);
         showPassword.addActionListener(this);
     }
+    
+
 
     @Override
     public void actionPerformed(ActionEvent e) {
