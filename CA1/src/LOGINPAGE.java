@@ -18,6 +18,10 @@ public class LOGINPAGE extends JFrame implements ActionListener {
     JButton loginButton = new JButton("LOGIN");
     JButton CLIENTButton = new JButton("NEW ACCOUNT");
     JCheckBox showPassword = new JCheckBox("Show Password");
+    
+    
+    // CONECTION WITH DATABASE MANAGER
+    DATABASECONECTION dbC = new DATABASECONECTION(); 
 
     LOGINPAGE() {
         setLayoutManager();
@@ -65,35 +69,27 @@ public class LOGINPAGE extends JFrame implements ActionListener {
 
 
     @Override
-    public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == loginButton) {
-            String userText;
-            String pwdText;
-            userText = userTextField.getText();
-            pwdText = passwordField.getText();
-            if (userText.equalsIgnoreCase("") && pwdText.equalsIgnoreCase("")) {
-                CONTROLLER nc = new CONTROLLER();
-                nc.setVisible(true);
-                dispose();
-                JOptionPane.showMessageDialog(this, "Login Successful");
-            } else {
-                JOptionPane.showMessageDialog(this, "Invalid Username or Password");
-            }
+    public void actionPerformed(ActionEvent e)  
+    
+{
+        char[] input = ((JPasswordField) passwordField).getPassword();
+        String fullName = userTextField.getText();
+        String password = String.copyValueOf(input);
 
-        }
-        if (e.getSource() == CLIENTButton) {
-            NCLIENT nc = new NCLIENT();
-            nc.setVisible(true);
-            dispose();
-        }
-        if (e.getSource() == showPassword) {
-            if (showPassword.isSelected()) {
-                passwordField.setEchoChar((char) 0);
-            } else {
-                passwordField.setEchoChar('*');
-            }
+        System.out.println("value1: " + fullName);
+        System.out.println("value2: " + password);
 
+        if(dbC.vertify(fullName, password))
+        {
+                //a pop-up box
+                JOptionPane.showMessageDialog(null, "You have logged in successfully", "Success",
+                                JOptionPane.INFORMATION_MESSAGE);
         }
-    }
-
+        else
+        {
+                //a pop-up box
+                JOptionPane.showMessageDialog(null, "Login failed!", "Failed!",
+                                JOptionPane.INFORMATION_MESSAGE);
+        }
+}
 }

@@ -10,6 +10,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.sql.*;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -104,19 +105,21 @@ public class NCLIENT extends JFrame implements ActionListener {
     
 
     public void actionPerformed(ActionEvent e) {
+            Connection cnn;
+            
         
         
-        if (e.getSource() == submit) {
-//                NewClient nc = new NewClient();
-//                nc.setVisible(true);
-//                dispose();
-                JOptionPane.showMessageDialog(this, "Thank you for your registration!");
-
-        } else if (e.getSource() == home) {
-            CA1 nc = new CA1();
-            nc.setVisible(true);
-            dispose();
-        }
+//        if (e.getSource() == submit) {
+////                NewClient nc = new NewClient();
+////                nc.setVisible(true);
+////                dispose();
+//                JOptionPane.showMessageDialog(this, "Thank you for your registration!");
+//
+//        } else if (e.getSource() == home) {
+//            CA1 nc = new CA1();
+//            nc.setVisible(true);
+//            dispose();
+//        }
     }
 
 }
