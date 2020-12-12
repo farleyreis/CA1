@@ -34,7 +34,7 @@ public abstract class SERVICEPROVIDER extends JFrame implements ActionListener {
     
     JPanel panel;
     JLabel user_label, password_label, jobService, location, password_label2, message, email, phoneNumber;
-    JTextField userName_text, emailText, phoneNumberText;
+    JTextField userName_text, emailText, phoneNumberText, jobServiceText,locationText ;
     JPasswordField password_text, password_text2;
     JButton submit, cancel;
     JButton newUser, backb;
@@ -44,35 +44,37 @@ public abstract class SERVICEPROVIDER extends JFrame implements ActionListener {
     {//Full name
 
         user_label = new JLabel();
-        user_label.setText("UserName:");
+        user_label.setText("EMPLOYEE NAME:");
         userName_text = new JTextField();
 
         // email
         email = new JLabel();
-        email.setText("Email :");
+        email.setText("EMAIL :");
         emailText = new JTextField();
         
         // Job service
         jobService = new JLabel();
-        jobService.setText("Job Service:");
+        jobService.setText("JOB SERVICE:");
+        jobServiceText = new JTextField();
         //box with the options
 
         //phone Number
         phoneNumber = new JLabel();
-        phoneNumber.setText("Phone Number :");
+        phoneNumber.setText("PHONE NUMBER :");
         phoneNumberText = new JTextField();
         
         //Location
         location = new JLabel();
-        location.setText("Location:");
+        location.setText("LOCATION:");
+        locationText = new JTextField();
         //box with options
 
         password_label = new JLabel();
-        password_label.setText("Password :");
+        password_label.setText("PASSWORD :");
         password_text = new JPasswordField();
 
         password_label2 = new JLabel();
-        password_label2.setText("Confirm Password :");
+        password_label2.setText("CONFIRM PASSWORD :");
         password_text2 = new JPasswordField();
 
         // Submit
@@ -94,6 +96,10 @@ public abstract class SERVICEPROVIDER extends JFrame implements ActionListener {
         panel.add(emailText);
         panel.add(phoneNumber);
         panel.add(phoneNumberText);
+        panel.add(jobService);
+        panel.add(jobServiceText);
+         panel.add(location);
+        panel.add(locationText);
         panel.add(password_label);
         panel.add(password_text);
         panel.add(password_label2);
@@ -121,13 +127,12 @@ public abstract class SERVICEPROVIDER extends JFrame implements ActionListener {
 
             public void actionPerformed(ActionEvent e) {
                 try {
-                    theQuery("INSERT INTO user (name,password,passwordConf,email,phoneNumber) VALUES ('" + userName_text.getText() + "',"
-                            + "'" + password_text.getText() + "','" + password_text2.getText() + "','" + emailText.getText() + "','" + phoneNumberText.getText() + "')");
+                    theQuery("INSERT INTO employee (empName,empEmail,empPhone,empPWD,empPWDConf,empJob,empLocation) VALUES ('" + userName_text.getText() + "','"+ emailText.getText() + "','" + phoneNumberText.getText() + "','" + password_text.getText() + "','" + password_text2.getText() + "','" + jobServiceText.getText() + "','" + locationText.getText() + "')");
                 } catch (Exception ex) {
                 }
 
             } 
-            
+      
 
         }
         );

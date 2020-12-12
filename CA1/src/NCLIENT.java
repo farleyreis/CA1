@@ -35,25 +35,25 @@ public abstract class NCLIENT extends JFrame implements ActionListener {
         //Full name
 
         fullName = new JLabel();
-        fullName.setText("Full Name:");
+        fullName.setText("FULL NAME :");
         fullNameText = new JTextField();
 
         // email
         email = new JLabel();
-        email.setText("Email :");
+        email.setText("EMAIL :");
         emailText = new JTextField();
 
         //phone Number
         phoneNumber = new JLabel();
-        phoneNumber.setText("Phone Number :");
+        phoneNumber.setText("PHONE NUMBER :");
         phoneNumberText = new JTextField();
 
         password_label = new JLabel();
-        password_label.setText("PassWord :");
+        password_label.setText("PASSWORD :");
         password_text = new JPasswordField();
 
         password_label2 = new JLabel();
-        password_label2.setText("Confirm PassWord :");
+        password_label2.setText("CONFIRM PASSWORD :");
         password_text2 = new JPasswordField();
 
         // Submit
