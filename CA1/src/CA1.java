@@ -78,7 +78,7 @@ public class CA1 extends JPanel {
             // my old condition is in the SERVICEPROVIDER class, you can copy all code from the NewCliente class and put it in
             // from SERVICEPROVIDER to have the same design.
             else if (e.getSource() == button2) {
-                SERVICEPROVIDER nc = new SERVICEPROVIDER();
+                LOGINPAGESP nc = new LOGINPAGESP();
                 nc.setVisible(true);
                 
             }

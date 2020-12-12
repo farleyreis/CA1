@@ -93,14 +93,15 @@ public class BOOKS extends JFrame implements ActionListener {
             //dispose();
 
         } else if (e.getSource() == btn2) {
-            SERVICEPROVIDER nc = new SERVICEPROVIDER();
+            SERVICEPROVIDER nc = new SERVICEPROVIDER() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+                }
+            };
             nc.setVisible(true);
             //dispose();
         }
     }
 
-    //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-//    public void setVisible(boolean b) {
-//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-//    }
 }
