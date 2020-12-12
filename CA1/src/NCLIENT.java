@@ -19,19 +19,16 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
+import static sun.swing.SwingUtilities2.submit;
 
-public class NCLIENT extends JFrame implements ActionListener {
-    
-    
-
-    
+public abstract class NCLIENT extends JFrame implements ActionListener {
 
     JPanel panel;
     JLabel user_label, password_label, password_label2, message, fullName, email, phoneNumber;
     JTextField userName_text, fullNameText, emailText, phoneNumberText;
     JPasswordField password_text, password_text2;
     JButton submit, cancel, home;
-   
+
     private ActionListener eventHandler;
 
     public NCLIENT() {
@@ -67,7 +64,7 @@ public class NCLIENT extends JFrame implements ActionListener {
         submit.addActionListener(eventHandler);
         home.addActionListener(eventHandler);
 
-        panel = new JPanel(new GridLayout(10, 10));
+        panel = new JPanel(new GridLayout(11, 3));
 
         panel.add(fullName);
         panel.add(fullNameText);
@@ -87,39 +84,72 @@ public class NCLIENT extends JFrame implements ActionListener {
         //panel.add(newUser);
         home.setForeground(Color.red);
         home.setOpaque(true);
-        
+
         // Adding the listeners to components..
         submit.addActionListener(this);
         home.addActionListener(this);
         add(panel, BorderLayout.CENTER);
-        
-        setTitle("Please Login Here !");
+
+        setTitle("Welcome to SOS BEAUTY!");
         setSize(500, 400);
         setVisible(true);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         panel.setBorder(BorderFactory.createTitledBorder("SOS BEAUTY CLIENT LOGIN"));
-        
+
+        submit.addActionListener(new ActionListener() {
+
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    theQuery("INSERT INTO user (name,password,email,phoneNumber) VALUES ('" + fullNameText.getText() + "','" + password_text.getText() + "','" + emailText.getText() + "','" + phoneNumberText.getText() + "')");
+                } catch (Exception ex) {
+                }
+
+            }
+
+        }
+        );
+        home.addActionListener(new ActionListener() {
+
+            public void actionPerformed(ActionEvent e) {
+                LOGINPAGE ps = new LOGINPAGE();
+
+                ps.setVisible(true);
+
+            }
+
+        }
+        );
+
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setVisible(true);
+        //setLocationRelativeTo(null);
+        setSize(700, 550);
 
     }
-    
 
-    public void actionPerformed(ActionEvent e) {
-            Connection cnn;
-            
-        
-        
-//        if (e.getSource() == submit) {
-////                NewClient nc = new NewClient();
-////                nc.setVisible(true);
-////                dispose();
-//                JOptionPane.showMessageDialog(this, "Thank you for your registration!");
-//
-//        } else if (e.getSource() == home) {
-//            CA1 nc = new CA1();
-//            nc.setVisible(true);
-//            dispose();
-//        }
+    //function to execute the insert update delete query
+    public void theQuery(String query) {
+        Connection con = null;
+        Statement st = null;
+        try {
+            con = DriverManager.getConnection("jdbc:mysql://apontejaj.com:3306/Fabiolla_2019226?useSSL=false", "Fabiolla_2019226", "2019226");
+            st = con.createStatement();
+            st.executeUpdate(query);
+            JOptionPane.showMessageDialog(null, "Query Executed");
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, ex.getMessage());
+        }
+    }
+
+    public static void main(String[] args) {
+
+        new NCLIENT() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+        };
     }
 
 }

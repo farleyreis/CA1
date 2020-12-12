@@ -48,7 +48,7 @@ public class CA1 extends JPanel {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
         frame.setVisible(true);
-        frame.setSize(500, 400);
+        frame.setSize(700, 550);
 
         panel.add(new JLabel("         "));
         panel.add(new JLabel("Hi!! Welcome to SOS Beauty!\n"

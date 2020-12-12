@@ -1,30 +1,30 @@
+
 import javax.swing.*;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.BoxLayout; 
-import java.awt.Component; 
+import javax.swing.BoxLayout;
+import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+public class BOOKS extends JFrame implements ActionListener {
 
-public class BOOKS extends JFrame implements ActionListener{
-    
     JButton btn, btn2;
-    
+
     private ActionListener eventHandler;
 
-    public BOOKS(){
+    public BOOKS() {
 
         JFrame frame = new JFrame("SOS Beauty - Select an Appointment");
         frame.setVisible(true);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(500, 400);
+        frame.setSize(700, 550);
         // frame.setLocation(430, 100);
 
         JPanel panel = new JPanel();
@@ -79,18 +79,18 @@ public class BOOKS extends JFrame implements ActionListener{
         panel.add(btn);
         panel.add(btn2);
 
-        frame.setVisible(true); 
+        frame.setVisible(true);
         btn2.addActionListener(this);
         btn.addActionListener(this);
         btn.addActionListener(eventHandler);
-        
+
     }
 
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == btn) {
-                CA1 nc = new CA1();
-                nc.setVisible(true);
-                //dispose();
+            CA1 nc = new CA1();
+            nc.setVisible(true);
+            //dispose();
 
         } else if (e.getSource() == btn2) {
             SERVICEPROVIDER nc = new SERVICEPROVIDER();
@@ -98,16 +98,9 @@ public class BOOKS extends JFrame implements ActionListener{
             //dispose();
         }
     }
-        
-        
-        
-        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    
 
+    //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
 //    public void setVisible(boolean b) {
 //        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
 //    }
-
-  
-
 }
