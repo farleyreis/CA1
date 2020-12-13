@@ -139,7 +139,7 @@ public abstract class SERVICEPROVIDER extends JFrame implements ActionListener {
         backb.addActionListener(new ActionListener() {
 
             public void actionPerformed(ActionEvent e) {
-                LOGINPAGE ps = new LOGINPAGE();
+                LOGINPAGESP ps = new LOGINPAGESP();
 
                 ps.setVisible(true);
                 

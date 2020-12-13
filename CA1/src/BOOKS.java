@@ -1,4 +1,3 @@
-
 import javax.swing.*;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -79,7 +78,7 @@ public class BOOKS extends JFrame implements ActionListener {
         panel.add(btn);
         panel.add(btn2);
 
-        frame.setVisible(true);
+        //frame.setVisible(true);
         btn2.addActionListener(this);
         btn.addActionListener(this);
         btn.addActionListener(eventHandler);
@@ -90,7 +89,7 @@ public class BOOKS extends JFrame implements ActionListener {
         if (e.getSource() == btn) {
             CA1 nc = new CA1();
             nc.setVisible(true);
-            //dispose();
+            dispose();
 
         } else if (e.getSource() == btn2) {
             SERVICEPROVIDER nc = new SERVICEPROVIDER() {
@@ -100,7 +99,7 @@ public class BOOKS extends JFrame implements ActionListener {
                 }
             };
             nc.setVisible(true);
-            //dispose();
+            dispose();
         }
     }
 

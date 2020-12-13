@@ -4,63 +4,67 @@
  * @author farleyreis Fabiola
  */
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.sql.*;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
+import static sun.swing.SwingUtilities2.submit;
 
-public class SETTINGS extends JFrame implements ActionListener {
+public abstract class SETTINGS extends JFrame implements ActionListener {
 
     JPanel panel;
     JLabel user_label, password_label, password_label2, message, fullName, email, phoneNumber;
     JTextField userName_text, fullNameText, emailText, phoneNumberText;
     JPasswordField password_text, password_text2;
-    JButton submit, cancel, backb;
-    JButton newUser;
+    JButton submit, cancel, home;
+
     private ActionListener eventHandler;
 
     public SETTINGS() {
         //Full name
 
         fullName = new JLabel();
-        fullName.setText("CHANGE: Name:");
+        fullName.setText("UPDATE FULL NAME :");
         fullNameText = new JTextField();
 
         // email
         email = new JLabel();
-        email.setText("CHANGE: Email :");
+        email.setText("UPDATE EMAIL :");
         emailText = new JTextField();
 
         //phone Number
         phoneNumber = new JLabel();
-        phoneNumber.setText("CHANGE: Phone Number :");
+        phoneNumber.setText("UPDATE PHONE NUMBER :");
         phoneNumberText = new JTextField();
 
         password_label = new JLabel();
-        password_label.setText("NEW PassWord :");
+        password_label.setText("UPDATE PASSWORD :");
         password_text = new JPasswordField();
 
         password_label2 = new JLabel();
-        password_label2.setText("Confirm new PassWord :");
+        password_label2.setText("UPDATE CONFIRM PASSWORD :");
         password_text2 = new JPasswordField();
 
         // Submit
         submit = new JButton("SUBMIT");
-        backb = new JButton("BACK");
+        home = new JButton("HOME");
         //newUser = new JButton("NEW USER");
 
         submit.addActionListener(eventHandler);
-        //newUser.addActionListener(eventHandler);
+        home.addActionListener(eventHandler);
 
-        panel = new JPanel(new GridLayout(10, 10));
+        panel = new JPanel(new GridLayout(11, 3));
 
         panel.add(fullName);
         panel.add(fullNameText);
@@ -76,39 +80,82 @@ public class SETTINGS extends JFrame implements ActionListener {
         message = new JLabel();
         panel.add(message);
         panel.add(submit);
-        panel.add(backb);
-        
+        panel.add(home);
         //panel.add(newUser);
+        home.setForeground(Color.red);
+        home.setOpaque(true);
 
-        
         // Adding the listeners to components..
         submit.addActionListener(this);
+        home.addActionListener(this);
         add(panel, BorderLayout.CENTER);
-        setTitle("Please Login Here !");
+
+        setTitle("Welcome to SOS BEAUTY!");
         setSize(500, 400);
         setVisible(true);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        
 
         panel.setBorder(BorderFactory.createTitledBorder("SOS BEAUTY CLIENT LOGIN"));
 
+        submit.addActionListener(new ActionListener() {
+
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    theQuery("UPDATE user SET('" + fullNameText.getText() + "',"
+                            + "'" + password_text.getText() + "','" + password_text2.getText() + "','" + emailText.getText() + "','" + phoneNumberText.getText() + "')");
+                } catch (Exception ex) {
+                }
+
+            } 
+            
+
+        }
+        );
+        home.addActionListener(new ActionListener() {
+
+            public void actionPerformed(ActionEvent e) {
+                LOGINPAGE ps = new LOGINPAGE();
+
+                ps.setVisible(true);
+                
+
+            }
+
+        }
+        );
+
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setVisible(true);
+        //setLocationRelativeTo(null);
+        setSize(700, 550);
+        
+
     }
 
-    public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == backb) {
-                CONTROLLER nc = new CONTROLLER();
-                //nc.setVisible(true);
-                //dispose();
-
-        } else if (e.getSource() == newUser) {
-            SERVICEPROVIDER nc = new SERVICEPROVIDER() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-                }
-            };
-            nc.setVisible(true);
-            dispose();
+    //function to execute the insert update delete query
+    public void theQuery(String query) {
+        Connection con = null;
+        Statement st = null;
+        try {
+            con = DriverManager.getConnection("jdbc:mysql://apontejaj.com:3306/Fabiolla_2019226?useSSL=false", "Fabiolla_2019226", "2019226");
+            st = con.createStatement();
+            st.executeUpdate(query);
+            JOptionPane.showMessageDialog(null, "Query Executed");
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, ex.getMessage());
         }
+    }
+
+    public static void main(String[] args) {
+
+        new SETTINGS() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+            
+        };
     }
 
 }

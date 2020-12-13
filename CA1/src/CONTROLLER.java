@@ -82,7 +82,12 @@ public class CONTROLLER extends JFrame implements ActionListener {
             dispose();
         }
         if (e.getSource() == b3) {
-            SETTINGS nc = new SETTINGS();
+            SETTINGS nc = new SETTINGS() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+                }
+            };
             nc.setVisible(true);
             dispose();
 

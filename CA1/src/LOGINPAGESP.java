@@ -25,12 +25,12 @@ import java.sql.SQLException;
 public class LOGINPAGESP extends JFrame implements ActionListener {
 
     Container container = getContentPane();
-    JLabel userLabel = new JLabel("USERNAME");
+    JLabel userLabel = new JLabel("EMAIL");
     JLabel passwordLabel = new JLabel("PASSWORD");
     JTextField userTextField = new JTextField();
     JPasswordField passwordField = new JPasswordField();
     JButton loginButton = new JButton("LOGIN");
-    JButton SPButton = new JButton("NEW ACCOUNT");
+    JButton SPButton = new JButton("NEW EMPLOYEE");
     JCheckBox showPassword = new JCheckBox("Show Password");
 
     LOGINPAGESP() {
@@ -93,7 +93,7 @@ public class LOGINPAGESP extends JFrame implements ActionListener {
             Connection connection = (Connection) DriverManager.getConnection("jdbc:mysql://apontejaj.com:3306/Fabiolla_2019226?useSSL=false", "Fabiolla_2019226", "2019226");
 
             PreparedStatement st = (PreparedStatement) connection
-                    .prepareStatement("Select email, password from user where email=? and password=?");
+                    .prepareStatement("Select empEmail, empPWD from employee where empEmail=? and empPWD=?");
 
             st.setString(1, userName);
             st.setString(2, password);
