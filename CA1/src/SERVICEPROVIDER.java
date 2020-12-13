@@ -1,9 +1,4 @@
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 /**
  *
  * @author Fabiolla/Farley
@@ -24,24 +19,26 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
-import static sun.swing.SwingUtilities2.submit;;
+import static sun.swing.SwingUtilities2.submit;
+
+;
 
 /**
- *ASDC
+ * ASDC
+ *
  * @author farleyreis
  */
 public abstract class SERVICEPROVIDER extends JFrame implements ActionListener {
-    
+
     JPanel panel;
     JLabel user_label, password_label, jobService, location, password_label2, message, email, phoneNumber;
-    JTextField userName_text, emailText, phoneNumberText, jobServiceText,locationText ;
+    JTextField userName_text, emailText, phoneNumberText, jobServiceText, locationText;
     JPasswordField password_text, password_text2;
     JButton submit, cancel;
     JButton newUser, backb;
     private ActionListener eventHandler;
-     
-    public SERVICEPROVIDER()
-    {//Full name
+
+    public SERVICEPROVIDER() {//Full name
 
         user_label = new JLabel();
         user_label.setText("EMPLOYEE NAME:");
@@ -51,7 +48,7 @@ public abstract class SERVICEPROVIDER extends JFrame implements ActionListener {
         email = new JLabel();
         email.setText("EMAIL :");
         emailText = new JTextField();
-        
+
         // Job service
         jobService = new JLabel();
         jobService.setText("JOB SERVICE:");
@@ -62,7 +59,7 @@ public abstract class SERVICEPROVIDER extends JFrame implements ActionListener {
         phoneNumber = new JLabel();
         phoneNumber.setText("PHONE NUMBER :");
         phoneNumberText = new JTextField();
-        
+
         //Location
         location = new JLabel();
         location.setText("LOCATION:");
@@ -83,12 +80,8 @@ public abstract class SERVICEPROVIDER extends JFrame implements ActionListener {
 
         submit.addActionListener(eventHandler);
         backb.addActionListener(eventHandler);
-       
-
-        
 
         panel = new JPanel(new GridLayout(11, 3));
-        
 
         panel.add(user_label);
         panel.add(userName_text);
@@ -98,7 +91,7 @@ public abstract class SERVICEPROVIDER extends JFrame implements ActionListener {
         panel.add(phoneNumberText);
         panel.add(jobService);
         panel.add(jobServiceText);
-         panel.add(location);
+        panel.add(location);
         panel.add(locationText);
         panel.add(password_label);
         panel.add(password_text);
@@ -111,7 +104,7 @@ public abstract class SERVICEPROVIDER extends JFrame implements ActionListener {
         panel.add(backb);
         backb.setForeground(Color.red);
         backb.setOpaque(true);
-        
+
         submit.addActionListener(this);
         backb.addActionListener(this);
         add(panel, BorderLayout.CENTER);
@@ -119,20 +112,19 @@ public abstract class SERVICEPROVIDER extends JFrame implements ActionListener {
         setTitle("Welcome to SOS BEAUTY!");
         setSize(700, 550);
         setVisible(true);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 
-        
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
         panel.setBorder(BorderFactory.createTitledBorder("SOS BEAUTY CLIENT LOGIN"));
 
         submit.addActionListener(new ActionListener() {
 
             public void actionPerformed(ActionEvent e) {
                 try {
-                    theQuery("INSERT INTO employee (empName,empEmail,empPhone,empPWD,empPWDConf,empJob,empLocation) VALUES ('" + userName_text.getText() + "','"+ emailText.getText() + "','" + phoneNumberText.getText() + "','" + password_text.getText() + "','" + password_text2.getText() + "','" + jobServiceText.getText() + "','" + locationText.getText() + "')");
+                    theQuery("INSERT INTO employee (empName,empEmail,empPhone,empPWD,empPWDConf,empJob,empLocation) VALUES ('" + userName_text.getText() + "','" + emailText.getText() + "','" + phoneNumberText.getText() + "','" + password_text.getText() + "','" + password_text2.getText() + "','" + jobServiceText.getText() + "','" + locationText.getText() + "')");
                 } catch (Exception ex) {
                 }
 
-            } 
-      
+            }
 
         }
         );
@@ -142,7 +134,6 @@ public abstract class SERVICEPROVIDER extends JFrame implements ActionListener {
                 LOGINPAGESP ps = new LOGINPAGESP();
 
                 ps.setVisible(true);
-                
 
             }
 
@@ -153,7 +144,6 @@ public abstract class SERVICEPROVIDER extends JFrame implements ActionListener {
         setVisible(true);
         //setLocationRelativeTo(null);
         setSize(700, 550);
-        
 
     }
 
@@ -174,13 +164,12 @@ public abstract class SERVICEPROVIDER extends JFrame implements ActionListener {
     public static void main(String[] args) {
 
         new SERVICEPROVIDER() {
-            
-            
+
             public void actionPerformed(ActionEvent e) {
                 throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
             }
-            
+
         };
 
-}
+    }
 }

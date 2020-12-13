@@ -94,7 +94,6 @@ public abstract class SETTINGS extends JFrame implements ActionListener {
         setSize(500, 400);
         setVisible(true);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        
 
         panel.setBorder(BorderFactory.createTitledBorder("SOS BEAUTY CLIENT LOGIN"));
 
@@ -107,8 +106,7 @@ public abstract class SETTINGS extends JFrame implements ActionListener {
                 } catch (Exception ex) {
                 }
 
-            } 
-            
+            }
 
         }
         );
@@ -118,7 +116,6 @@ public abstract class SETTINGS extends JFrame implements ActionListener {
                 LOGINPAGE ps = new LOGINPAGE();
 
                 ps.setVisible(true);
-                
 
             }
 
@@ -129,7 +126,6 @@ public abstract class SETTINGS extends JFrame implements ActionListener {
         setVisible(true);
         //setLocationRelativeTo(null);
         setSize(700, 550);
-        
 
     }
 
@@ -154,7 +150,7 @@ public abstract class SETTINGS extends JFrame implements ActionListener {
             public void actionPerformed(ActionEvent e) {
                 throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
             }
-            
+
         };
     }
 

@@ -1,78 +1,107 @@
 
-
-/**
- *ASDF
- * @author Fabiolla/Farley
- */
 import javax.swing.*;
-import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.Color;
-import java.awt.Container;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import javax.swing.BorderFactory;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-   
+import javax.swing.BoxLayout;
+import java.awt.Component;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 public class SETAVAILABILITY extends JFrame implements ActionListener {
 
-    Container container = getContentPane();
+    JButton btn, btn2;
 
-    
-    JButton menu = new JButton("MENU");
+    private ActionListener eventHandler;
 
-    SETAVAILABILITY() {
-        setLayoutManager();
-        setLocationAndSize();
-        addComponentsToContainer();
-        addActionEvent();
+    public SETAVAILABILITY() {
+
+        JFrame frame = new JFrame("SOS Beauty - Select an Appointment");
+        frame.setVisible(true);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setSize(700, 550);
+        // frame.setLocation(430, 100);
+
+        JPanel panel = new JPanel();
+        panel = new JPanel(new GridLayout(8, 8));
+
+        frame.add(panel);
+
+        JLabel SER = new JLabel("SELECT SERVICE ");
+        JLabel MON = new JLabel("SELECT MONTH");
+        JLabel DIA = new JLabel("SELECT DAY");
+        JLabel HR = new JLabel("SELECT TIME:");
+
+        String[] Service = {"Haircutting", "Hair Coloring", "Specialty coloring", "Grey Blending",
+            "Highlights", "Gel nail extension", "Acrylic nail extensi", "Overlays", "Manicure", "Reconstruction Nails",
+            "Spa pedicure + gel polish on toes", "Repair one nail"};
+
+        String[] Month = {"January", "February", "March", "April",
+            "May", "June", "July", "August", "September", "October",
+            "November", "December"};
+        String[] Day = {"1", "2", "3", "4",
+            "5", "6", "7", "8", "9", "10",
+            "11", "12", "13", "14",
+            "15", "16", "17", "18", "19", "20",
+            "21", "22", "23", "24",
+            "25", "26", "27", "28", "29", "30"};
+
+        String[] Time = {"9h", "10h",
+            "11h", "12h", "13h", "14h",
+            "15h", "16h", "17h", "18h"};
+
+        final JComboBox<String> sr = new JComboBox<String>(Service);
+        panel.add(SER);
+        final JComboBox<String> cd = new JComboBox<String>(Day);
+        final JComboBox<String> cb = new JComboBox<String>(Month);
+        final JComboBox<String> hr = new JComboBox<String>(Time);
+
+        panel.add(SER);
+        panel.add(sr);
+
+        panel.add(MON);
+        panel.add(cb);
+
+        panel.add(DIA);
+        panel.add(cd);
+
+        panel.add(HR);
+        panel.add(hr);
+
+        JButton btn = new JButton("BACK");
+        JButton btn2 = new JButton("SEND SPOT AVAILABLE");
+
+        panel.add(btn);
+        panel.add(btn2);
+
+        //frame.setVisible(true);
+        btn2.addActionListener(this);
+        btn.addActionListener(this);
+        btn.addActionListener(eventHandler);
 
     }
 
-    public void setLayoutManager() {
-        container.setLayout(null);
-        
-    }
-
-    public void setLocationAndSize() {
-        
-        menu.setBounds(220, 300, 200, 32);
-
-        setSize(700, 550);
-    }
-
-    public void addComponentsToContainer() {
-        
-        container.add(menu);
-        
-        menu.setForeground(Color.red);
-        menu.setOpaque(true);
-
-    }
-
-    public void addActionEvent() {
-        
-        menu.addActionListener(this);
-        
-        menu.setForeground(Color.red);
-        menu.setOpaque(true);
-    }
-
-    @Override
     public void actionPerformed(ActionEvent e) {
-        
-        
-        if (e.getSource() == menu) {
-           MENUSP nc = new MENUSP();
+        if (e.getSource() == btn) {
+            MENUSP nc = new MENUSP();
+            nc.setVisible(true);
+            dispose();
+
+        } else if (e.getSource() == btn2) {
+            SERVICEPROVIDER nc = new SERVICEPROVIDER() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+                }
+            };
             nc.setVisible(true);
             dispose();
         }
-        
-        else {
-        }
     }
+
 }

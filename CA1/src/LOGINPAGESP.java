@@ -1,17 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To chaSDFnge this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-
-
 
 /**
  *
  * @author Fabiolla/Farley
  */
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -40,7 +31,6 @@ public class LOGINPAGESP extends JFrame implements ActionListener {
         addActionEvent();
 
     }
-
 
     public void setLayoutManager() {
         container.setLayout(null);
@@ -73,12 +63,11 @@ public class LOGINPAGESP extends JFrame implements ActionListener {
         showPassword.addActionListener(this);
     }
 
-    
-     @Override
+    @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == SPButton) {
             SERVICEPROVIDER nc = new SERVICEPROVIDER() {
-               
+
                 public void actionPerformed(ActionEvent e) {
                     throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
                 }

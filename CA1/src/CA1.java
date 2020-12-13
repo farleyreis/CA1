@@ -32,7 +32,7 @@ public class CA1 extends JPanel {
 
         JFrame frame = new JFrame();
         JPanel panel = new JPanel();
-        
+
         panel.setLayout(new GridLayout(10, 10));
 
         button1 = new JButton("CLIENT");
@@ -69,18 +69,17 @@ public class CA1 extends JPanel {
         public void actionPerformed(ActionEvent e) {
             if (e.getSource() == button1) {
                 LOGINPAGE ps = new LOGINPAGE();
-               
-                ps.setVisible(true);
-                
-                  //dispose();
 
+                ps.setVisible(true);
+
+                //dispose();
             } // here your part .. of button2 SERVICEPROVIDER will enter.
             // my old condition is in the SERVICEPROVIDER class, you can copy all code from the NewCliente class and put it in
             // from SERVICEPROVIDER to have the same design.
             else if (e.getSource() == button2) {
                 LOGINPAGESP nc = new LOGINPAGESP();
                 nc.setVisible(true);
-                
+
             }
 
         }

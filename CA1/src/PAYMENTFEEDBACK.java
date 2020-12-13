@@ -21,40 +21,40 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import static sun.swing.SwingUtilities2.submit;
 
-public abstract class NCLIENT extends JFrame implements ActionListener {
+public abstract class PAYMENTFEEDBACK extends JFrame implements ActionListener {
 
     JPanel panel;
     JLabel user_label, password_label, password_label2, message, fullName, email, phoneNumber;
-    JTextField userName_text, fullNameText, emailText, phoneNumberText;
-    JPasswordField password_text, password_text2;
+    JTextField userName_text, fullNameText, emailText, phoneNumberText, password_text, password_text2;
+
     JButton submit, cancel, home;
 
     private ActionListener eventHandler;
 
-    public NCLIENT() {
+    public PAYMENTFEEDBACK() {
         //Full name
 
         fullName = new JLabel();
-        fullName.setText("FULL NAME :");
+        fullName.setText("Did we meet your expectations?:");
         fullNameText = new JTextField();
 
         // email
         email = new JLabel();
-        email.setText("EMAIL :");
+        email.setText("How d'you rate your interaction with our employees?:");
         emailText = new JTextField();
 
         //phone Number
         phoneNumber = new JLabel();
-        phoneNumber.setText("PHONE NUMBER :");
+        phoneNumber.setText("What would have made your experience better? :");
         phoneNumberText = new JTextField();
 
         password_label = new JLabel();
-        password_label.setText("PASSWORD :");
-        password_text = new JPasswordField();
+        password_label.setText("Were we able to satisfy your need? :");
+        password_text = new JTextField();
 
         password_label2 = new JLabel();
-        password_label2.setText("CONFIRM PASSWORD :");
-        password_text2 = new JPasswordField();
+        password_label2.setText("There's anything else you'd like us to know about?:");
+        password_text2 = new JTextField();
 
         // Submit
         submit = new JButton("SUBMIT");
@@ -64,7 +64,7 @@ public abstract class NCLIENT extends JFrame implements ActionListener {
         submit.addActionListener(eventHandler);
         home.addActionListener(eventHandler);
 
-        panel = new JPanel(new GridLayout(11, 3));
+        panel = new JPanel(new GridLayout(10, 10, 10, 10));
 
         panel.add(fullName);
         panel.add(fullNameText);
@@ -95,13 +95,13 @@ public abstract class NCLIENT extends JFrame implements ActionListener {
         setVisible(true);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        panel.setBorder(BorderFactory.createTitledBorder("SOS BEAUTY CLIENT LOGIN"));
+        panel.setBorder(BorderFactory.createTitledBorder("FEEDBACK SECCION"));
 
         submit.addActionListener(new ActionListener() {
 
             public void actionPerformed(ActionEvent e) {
                 try {
-                    theQuery("INSERT INTO user (name,password,passwordConf,email,phoneNumber) VALUES ('" + fullNameText.getText() + "',"
+                    theQuery("INSERT INTO feedBack (expectations,interaction,experience,satisfy,smt) VALUES ('" + fullNameText.getText() + "',"
                             + "'" + password_text.getText() + "','" + password_text2.getText() + "','" + emailText.getText() + "','" + phoneNumberText.getText() + "')");
                 } catch (Exception ex) {
                 }
@@ -145,7 +145,7 @@ public abstract class NCLIENT extends JFrame implements ActionListener {
 
     public static void main(String[] args) {
 
-        new NCLIENT() {
+        new PAYMENTFEEDBACK() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.

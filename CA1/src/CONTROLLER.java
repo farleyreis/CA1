@@ -97,7 +97,19 @@ public class CONTROLLER extends JFrame implements ActionListener {
             nc.setVisible(true);
             dispose();
 
+        }
+        if (e.getSource() == b4) {
+            PAYMENTFEEDBACK nc = new PAYMENTFEEDBACK() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+                }
+            };
+            nc.setVisible(true);
+            dispose();
+
         } else {
+
         }
 
     }

@@ -1,10 +1,8 @@
 
-
 /**
- *ASDF
+ *
  * @author Fabiolla/Farley
  */
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -30,7 +28,7 @@ public class MENUSP extends JFrame implements ActionListener {
 
     public void setLayoutManager() {
         container.setLayout(null);
-        
+
     }
 
     public void setLocationAndSize() {
@@ -49,7 +47,7 @@ public class MENUSP extends JFrame implements ActionListener {
         container.add(b3);
         container.add(b4);
         container.add(logout);
-        
+
         logout.setForeground(Color.red);
         logout.setOpaque(true);
 
@@ -61,7 +59,7 @@ public class MENUSP extends JFrame implements ActionListener {
         b3.addActionListener(this);
         b4.addActionListener(this);
         logout.addActionListener(this);
-        
+
         logout.setForeground(Color.red);
         logout.setOpaque(true);
     }
@@ -73,12 +71,11 @@ public class MENUSP extends JFrame implements ActionListener {
             SCHEDULE nc = new SCHEDULE();
             nc.setVisible(true);
             dispose();
-          
+
         }
 
         if (e.getSource() == b2) {
             CONFBOOKINGS nc = new CONFBOOKINGS() {
-                @Override
                 public void actionPerformed(ActionEvent e) {
                     throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
                 }
@@ -93,20 +90,22 @@ public class MENUSP extends JFrame implements ActionListener {
 
         }
         if (e.getSource() == b4) {
-//            FEEDBACKPAYMENT nc = new  FEEDBACKPAYMENT();
-//            nc.setVisible(true);
-//            dispose();
-           
+            PAYMENTFEEDBACK nc = new PAYMENTFEEDBACK() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+                }
+            };
+            nc.setVisible(true);
+            dispose();
 
-        } 
-        
+        }
+
         if (e.getSource() == logout) {
             CA1 nc = new CA1();
             nc.setVisible(true);
             dispose();
-        }
-        
-        else {
+        } else {
         }
 
     }

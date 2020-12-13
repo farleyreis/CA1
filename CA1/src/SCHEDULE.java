@@ -1,8 +1,7 @@
 
-
-
 /**
  *SD
+ *
  * @author Fabiolla/Farley
  */
 import javax.swing.*;
@@ -18,12 +17,11 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-   
+
 public class SCHEDULE extends JFrame implements ActionListener {
 
     Container container = getContentPane();
 
-    
     JButton menu = new JButton("MENU");
 
     SCHEDULE() {
@@ -36,44 +34,41 @@ public class SCHEDULE extends JFrame implements ActionListener {
 
     public void setLayoutManager() {
         container.setLayout(null);
-        
+
     }
 
     public void setLocationAndSize() {
-        
+
         menu.setBounds(220, 300, 200, 32);
 
         setSize(700, 550);
     }
 
     public void addComponentsToContainer() {
-        
+
         container.add(menu);
-        
+
         menu.setForeground(Color.red);
         menu.setOpaque(true);
 
     }
 
     public void addActionEvent() {
-        
+
         menu.addActionListener(this);
-        
+
         menu.setForeground(Color.red);
         menu.setOpaque(true);
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        
-        
+
         if (e.getSource() == menu) {
-           MENUSP nc = new MENUSP();
+            MENUSP nc = new MENUSP();
             nc.setVisible(true);
             dispose();
-        }
-        
-        else {
+        } else {
         }
     }
 }
