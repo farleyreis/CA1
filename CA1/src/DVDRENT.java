@@ -225,7 +225,7 @@ public class DVDRENT extends JFrame implements ActionListener {
             nc.setVisible(true);
             dispose();
 
-        }
+        } 
                                                        else if  (e.getSource() == choise6) {
             ZCHECKOUT nc = new ZCHECKOUT() {
             };
