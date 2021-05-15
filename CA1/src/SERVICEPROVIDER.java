@@ -1,7 +1,7 @@
 
 /**
  *
- * @author Fabiolla/Farley
+ * @author Farley Matheus
  */
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -36,6 +36,7 @@ public abstract class SERVICEPROVIDER extends JFrame implements ActionListener {
     JPasswordField password_text, password_text2;
     JButton submit, cancel;
     JButton newUser, backb;
+    
     private ActionListener eventHandler;
 
     public SERVICEPROVIDER() {//Full name
@@ -49,10 +50,7 @@ public abstract class SERVICEPROVIDER extends JFrame implements ActionListener {
         email.setText("EMAIL :");
         emailText = new JTextField();
 
-        // Job service
-        jobService = new JLabel();
-        jobService.setText("JOB SERVICE:");
-        jobServiceText = new JTextField();
+
         //box with the options
 
         //phone Number
@@ -60,11 +58,7 @@ public abstract class SERVICEPROVIDER extends JFrame implements ActionListener {
         phoneNumber.setText("PHONE NUMBER :");
         phoneNumberText = new JTextField();
 
-        //Location
-        location = new JLabel();
-        location.setText("LOCATION:");
-        locationText = new JTextField();
-        //box with options
+       
 
         password_label = new JLabel();
         password_label.setText("PASSWORD :");
@@ -89,10 +83,6 @@ public abstract class SERVICEPROVIDER extends JFrame implements ActionListener {
         panel.add(emailText);
         panel.add(phoneNumber);
         panel.add(phoneNumberText);
-        panel.add(jobService);
-        panel.add(jobServiceText);
-        panel.add(location);
-        panel.add(locationText);
         panel.add(password_label);
         panel.add(password_text);
         panel.add(password_label2);
@@ -109,18 +99,18 @@ public abstract class SERVICEPROVIDER extends JFrame implements ActionListener {
         backb.addActionListener(this);
         add(panel, BorderLayout.CENTER);
 
-        setTitle("Welcome to SOS BEAUTY!");
+        setTitle("Welcome Xtra-vision -- Video rental kiosk");
         setSize(700, 550);
         setVisible(true);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        panel.setBorder(BorderFactory.createTitledBorder("SOS BEAUTY CLIENT LOGIN"));
-
+        panel.setBorder(BorderFactory.createTitledBorder("Xtra-vision -- Video rental kiosk"));
+        
         submit.addActionListener(new ActionListener() {
 
             public void actionPerformed(ActionEvent e) {
                 try {
-                    theQuery("INSERT INTO employee (empName,empEmail,empPhone,empPWD,empPWDConf,empJob,empLocation) VALUES ('" + userName_text.getText() + "','" + emailText.getText() + "','" + phoneNumberText.getText() + "','" + password_text.getText() + "','" + password_text2.getText() + "','" + jobServiceText.getText() + "','" + locationText.getText() + "')");
+                    theQuery("INSERT INTO Employee (empName,empEmail,empPhone,empPWD,empPWDConf) VALUES ('" + userName_text.getText() + "','" + emailText.getText() + "','" + phoneNumberText.getText() + "','" + password_text.getText() + "','" + password_text2.getText() + "')");
                 } catch (Exception ex) {
                 }
 
@@ -131,7 +121,7 @@ public abstract class SERVICEPROVIDER extends JFrame implements ActionListener {
         backb.addActionListener(new ActionListener() {
 
             public void actionPerformed(ActionEvent e) {
-                LOGINPAGESP ps = new LOGINPAGESP();
+                CONTROLLER ps = new CONTROLLER();
 
                 ps.setVisible(true);
 
@@ -143,7 +133,7 @@ public abstract class SERVICEPROVIDER extends JFrame implements ActionListener {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);
         //setLocationRelativeTo(null);
-        setSize(700, 550);
+        setSize(1400, 788);
 
     }
 
@@ -152,7 +142,7 @@ public abstract class SERVICEPROVIDER extends JFrame implements ActionListener {
         Connection con = null;
         Statement st = null;
         try {
-            con = DriverManager.getConnection("jdbc:mysql://apontejaj.com:3306/Fabiolla_2019226?useSSL=false", "Fabiolla_2019226", "2019226");
+            con = DriverManager.getConnection("jdbc:mysql://apontejaj.com:3306/Matheus_2019378?useSSL=false", "Matheus_2019378", "2019378");
             st = con.createStatement();
             st.executeUpdate(query);
             JOptionPane.showMessageDialog(null, "Query Executed");

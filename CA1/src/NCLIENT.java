@@ -1,131 +1,230 @@
-
 /**
  *
- * @author farleyreis Fabiola
+ * @author farleyreis  & Matheus
  */
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.GridLayout;
+import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
 import java.sql.*;
-import javax.swing.BorderFactory;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JPasswordField;
-import javax.swing.JTextField;
-import static sun.swing.SwingUtilities2.submit;
 
-public abstract class NCLIENT extends JFrame implements ActionListener {
+    public abstract class NCLIENT extends JFrame implements ActionListener {
+        
+	private long idClient         = 0;
+	private String name      = null;
+	private String phoneN  = null;
+	private String email     = null;
 
-    JPanel panel;
-    JLabel user_label, password_label, password_label2, message, fullName, email, phoneNumber;
-    JTextField userName_text, fullNameText, emailText, phoneNumberText;
-    JPasswordField password_text, password_text2;
-    JButton submit, cancel, home;
 
-    private ActionListener eventHandler;
+	
+	public long getidClient() {
+		return idClient;
+	}
+	public void setidClient(long idClient) {
+		this.idClient = idClient;
+	}
+	public String getname() {
+		return name;
+	}
+	public void setname(String name) {
+		this.name = name;
+	}
+	public String getphoneN() {
+		return phoneN;
+	}
+	public void setphoneN(String phoneN) {
+		this.phoneN = phoneN;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
 
-    public NCLIENT() {
-        //Full name
+	
+	
+	public static boolean consultar(long idClient) {
+	
+		PreparedStatement stm = null;
+        Connection conn = null;
+        ResultSet rs = null;
+        
+    
+        try {
+            
+        	String sql = "SELECT * FROM Cliente WHERE idClient = ?";
+            DBASE bd = new DBASE();
+            conn = bd.obtemConexao();
+            
+            stm = conn.prepareStatement(sql);            
+            stm.setLong(1, idClient);
+            
+            rs = stm.executeQuery();
+            
+            
+            if (rs.next()) {
+            	rs.close();
+            	return true;
+            }            
 
-        fullName = new JLabel();
-        fullName.setText("FULL NAME :");
-        fullNameText = new JTextField();
-
-        // email
-        email = new JLabel();
-        email.setText("EMAIL :");
-        emailText = new JTextField();
-
-        //phone Number
-        phoneNumber = new JLabel();
-        phoneNumber.setText("PHONE NUMBER :");
-        phoneNumberText = new JTextField();
-
-        password_label = new JLabel();
-        password_label.setText("PASSWORD :");
-        password_text = new JPasswordField();
-
-        password_label2 = new JLabel();
-        password_label2.setText("CONFIRM PASSWORD :");
-        password_text2 = new JPasswordField();
-
-        // Submit
-        submit = new JButton("SUBMIT");
-        home = new JButton("HOME");
-        //newUser = new JButton("NEW USER");
-
-        submit.addActionListener(eventHandler);
-        home.addActionListener(eventHandler);
-
-        panel = new JPanel(new GridLayout(11, 3));
-
-        panel.add(fullName);
-        panel.add(fullNameText);
-        panel.add(email);
-        panel.add(emailText);
-        panel.add(phoneNumber);
-        panel.add(phoneNumberText);
-        panel.add(password_label);
-        panel.add(password_text);
-        panel.add(password_label2);
-        panel.add(password_text2);
-
-        message = new JLabel();
-        panel.add(message);
-        panel.add(submit);
-        panel.add(home);
-        //panel.add(newUser);
-        home.setForeground(Color.red);
-        home.setOpaque(true);
-
-        // Adding the listeners to components..
-        submit.addActionListener(this);
-        home.addActionListener(this);
-        add(panel, BorderLayout.CENTER);
-
-        setTitle("Welcome to SOS BEAUTY!");
-        setSize(500, 400);
-        setVisible(true);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-        panel.setBorder(BorderFactory.createTitledBorder("SOS BEAUTY CLIENT LOGIN"));
-
-        submit.addActionListener(new ActionListener() {
-
-            public void actionPerformed(ActionEvent e) {
+            rs.close();            
+            return false;
+            
+            
+        } catch (SQLException e) {
+            
+            e.printStackTrace();
+            try {
+                conn.rollback();
+                
+            } catch (SQLException e1) {
+                System.out.print(e1.getStackTrace());
+            }	            
+            return false;
+        }
+        finally{
+            if (stm != null) {
                 try {
-                    theQuery("INSERT INTO user (name,password,passwordConf,email,phoneNumber) VALUES ('" + fullNameText.getText() + "',"
-                            + "'" + password_text.getText() + "','" + password_text2.getText() + "','" + emailText.getText() + "','" + phoneNumberText.getText() + "')");
-                } catch (Exception ex) {
+                    stm.close();
                 }
-
+                catch (SQLException e1) {
+                    System.out.print(e1.getStackTrace());
+                }
             }
+        }		
 
-        }
+	}
+
+
+
+    Container container = getContentPane();
+    JLabel nameLabel = new JLabel("ENTER FULL NAME");
+    JTextField nameFild = new JTextField();
+    JLabel phoneLabel = new JLabel("PHONE NUMBER");
+    JTextField phoneTextFild = new JTextField();
+    JLabel emailLabel = new JLabel("EMAIL");
+    JTextField emailTextFild = new JTextField();
+    JLabel passW = new JLabel("ENTER PASSWORD");
+
+    JPasswordField emailPass = new JPasswordField();
+    JLabel passW1 = new JLabel("CONFIRM PASSW");
+    JPasswordField emailPass1 = new JPasswordField();
+    JButton backButton = new JButton("BACK MENU");
+    JButton submitB = new JButton("SUBMIT");
+
+    JLabel background;
+    JLabel qrC;
+
+
+
+
+    NCLIENT() {
+        setLayoutManager();
+        setLocationAndSize();
+        addComponentsToContainer();
+        addActionEvent();
+
+        ImageIcon img = new ImageIcon("src/images/movieQR.jpg");
+        //ImageIcon qrCode = new ImageIcon("CA1/src/images/QR.png");
+
+        background = new JLabel("",img,JLabel.CENTER);
+        //qrC = new JLabel("",qrCode,JLabel.CENTER);
+        //qrC.setSize(400,400);
+        background.setSize(1400,788);
+        container.add(background);
+        //container.add(qrC);
+        //qrCode.getImageLoadStatus();
+    }
+
+    NCLIENT(CA1.EventHandler aThis, boolean b) {
+        CA1.actionPerformed(null);
+    }
+
+    public void setLayoutManager() {
+        container.setLayout(null);
+    }
+
+    public void setLocationAndSize() {
+        nameLabel.setFont(new Font("Calibri", Font.BOLD, 20));
+        nameLabel.setForeground(Color.white);
+        nameLabel.setBounds(700, 100, 250, 50);
+        nameFild.setBounds(900, 100, 400, 50);
+        phoneLabel.setBounds(700,150,150,50);
+        phoneLabel.setFont(new Font("Calibri", Font.BOLD, 20));
+        phoneLabel.setForeground(Color.white);
+        phoneTextFild.setBounds(900,150,400,50);
+        emailLabel.setBounds(700, 200, 150, 50);
+        emailLabel.setFont(new Font("Calibri", Font.BOLD, 20));
+        emailLabel.setForeground(Color.WHITE);
+        emailTextFild.setBounds(900,200,400,50);
+        passW.setBounds(700, 250, 400, 50);
+        emailPass.setBounds(900, 250, 400, 50);
+        passW.setFont(new Font("Calibri", Font.BOLD, 20));
+        passW.setForeground(Color.white);
+        passW1.setBounds(700,300,400,50);
+        passW1.setFont(new Font("Calibri", Font.BOLD, 20));
+        passW1.setForeground(Color.white);
+        emailPass1.setBounds(900, 300, 400, 50);
+        //emailPass.setBounds(200,100,400,50);
+
+        submitB.setBounds(200,600,250,70);
+        backButton.setBounds(200,680,250,70);
+
+
+;
+
+        setSize(1400, 788);
+    }
+
+    public void addComponentsToContainer() {
+        
+
+        container.add(nameLabel);
+        container.add(nameFild);
+        container.add(phoneLabel);
+        container.add(phoneTextFild);
+        container.add(emailLabel);
+        container.add(emailPass);
+        container.add(emailPass1);
+        container.add(backButton);
+        container.add(submitB);
+        container.add(emailTextFild);
+        container.add(passW);
+        container.add(passW1);
+    }
+
+    public void addActionEvent() {
+        //newMovies.addActionListener(this);
+        submitB.addActionListener(new ActionListener() {
+
+                                     public void actionPerformed(ActionEvent e) {
+                                         try {
+                                             theQuery("INSERT INTO Client (fullName,phoneNumber,email,passW,passwC) VALUES ('" + nameFild.getText() + "','" + phoneTextFild.getText() + "','" + emailTextFild.getText() + "','" + emailPass.getText() + "','" + emailPass1.getText() + "')");
+                                              CA1 ps = new CA1();
+                                         } catch (Exception ex) {
+                                         }
+
+                                     }
+
+                                 }
         );
-        home.addActionListener(new ActionListener() {
+        backButton.addActionListener(new ActionListener() {
 
-            public void actionPerformed(ActionEvent e) {
-                LOGINPAGE ps = new LOGINPAGE();
+                                    public void actionPerformed(ActionEvent e) {
+                                        DVDRENT ps = new DVDRENT();
 
-                ps.setVisible(true);
+                                        ps.setVisible(true);
 
-            }
+                                    }
 
-        }
+                                }
         );
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);
         //setLocationRelativeTo(null);
-        setSize(700, 550);
+        setSize(1400, 799);
 
     }
 
@@ -134,24 +233,25 @@ public abstract class NCLIENT extends JFrame implements ActionListener {
         Connection con = null;
         Statement st = null;
         try {
-            con = DriverManager.getConnection("jdbc:mysql://apontejaj.com:3306/Fabiolla_2019226?useSSL=false", "Fabiolla_2019226", "2019226");
+            con = DriverManager.getConnection("jdbc:mysql://52.50.23.197:3306/Matheus_2019378?useSSL=false", "Matheus_2019378", "2019378");
             st = con.createStatement();
             st.executeUpdate(query);
             JOptionPane.showMessageDialog(null, "Query Executed");
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, ex.getMessage());
         }
+        
     }
 
-    public static void main(String[] args) {
-
-        new NCLIENT() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-            }
-
-        };
-    }
-
+//    public static void main(String[] args) {
+//
+//        new NCLIENT() {
+//
+//            public void actionPerformed(ActionEvent e) {
+//                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+//            }
+//
+//        };
+//
+//    }
 }

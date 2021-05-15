@@ -1,22 +1,30 @@
 
 /**
  *
- * @author farleyreis Fabiola
+ * @author Farley Matheus
  */
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 public class CONTROLLER extends JFrame implements ActionListener {
 
     Container container = getContentPane();
-
-    JButton b1 = new JButton("ENTER AVAILABLE SLOTS");
-    JButton b2 = new JButton("CANCEL BOOKS");
-    JButton b3 = new JButton("SETTINGS");
-    JButton b4 = new JButton("FEEDBACKS & PAYMENTS");
-    JButton home = new JButton("HOME PAGE");
+    JLabel userLabel = new JLabel("EMAIL");
+    JLabel passwordLabel = new JLabel("PASSWORD");
+    JTextField userTextField = new JTextField();
+    JPasswordField passwordField = new JPasswordField();
+    JButton loginButton = new JButton("LOGIN");
+    JButton SPButton = new JButton("NEW EMPLOYEE");
+    JCheckBox showPassword = new JCheckBox("Show Password");
+    JButton backMenu = new JButton("BACK MENU");
+    
 
     CONTROLLER() {
         setLayoutManager();
@@ -28,89 +36,87 @@ public class CONTROLLER extends JFrame implements ActionListener {
 
     public void setLayoutManager() {
         container.setLayout(null);
-
     }
 
     public void setLocationAndSize() {
-        b1.setBounds(220, 50, 200, 32);
-        b2.setBounds(220, 100, 200, 32);
-        b3.setBounds(220, 150, 200, 32);
-        b4.setBounds(220, 200, 200, 32);
-        home.setBounds(220, 250, 200, 32);
-
-        setSize(700, 550);
+        userLabel.setBounds(100, 150, 100, 30);
+        passwordLabel.setBounds(100, 220, 100, 30);
+        userTextField.setBounds(220, 150, 250, 30);
+        passwordField.setBounds(220, 220, 250, 30);
+        showPassword.setBounds(220, 250, 150, 30);
+        loginButton.setBounds(150, 300, 100, 40);
+        SPButton.setBounds(350, 300, 130, 40);
+        backMenu.setBounds(600, 300, 130, 40);
+        setSize(1400, 788);
     }
 
     public void addComponentsToContainer() {
-        container.add(b1);
-        container.add(b2);
-        container.add(b3);
-        container.add(b4);
-        container.add(home);
-
-        home.setForeground(Color.red);
-        home.setOpaque(true);
+        container.add(userLabel);
+        container.add(passwordLabel);
+        container.add(userTextField);
+        container.add(passwordField);
+        container.add(showPassword);
+        container.add(loginButton);
+        container.add(SPButton);
+         container.add(backMenu);
     }
 
     public void addActionEvent() {
-        b1.addActionListener(this);
-        b2.addActionListener(this);
-        b3.addActionListener(this);
-        b4.addActionListener(this);
-        home.addActionListener(this);
-
+        loginButton.addActionListener(this);
+        SPButton.addActionListener(this);
+        showPassword.addActionListener(this);
+        backMenu.addActionListener(this);
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == b1) {
+//                if (e.getSource() == backMenu) {
+//                CA1 nc = new CA1();
+//                //nc.setVisible(true);
 
-            BOOKS nc = new BOOKS();
-            nc.setVisible(true);
-            dispose();
-            JOptionPane.showMessageDialog(this, "Login Successful");
-        }
+//            }
+        if (e.getSource() == SPButton) {
+            SERVICEPROVIDER nc = new SERVICEPROVIDER() {
 
-        if (e.getSource() == b2) {
-            NCLIENT nc = new NCLIENT() {
-                @Override
                 public void actionPerformed(ActionEvent e) {
                     throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
                 }
+      
             };
-            nc.setVisible(true);
-            dispose();
-        }
-        if (e.getSource() == b3) {
-            SETTINGS nc = new SETTINGS() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-                }
-            };
+            
             nc.setVisible(true);
             dispose();
 
         }
-        if (e.getSource() == home) {
-            CA1 nc = new CA1();
-            nc.setVisible(true);
-            dispose();
+        String userName = userTextField.getText();
+        String password = passwordField.getText();
+        try {
+            Connection connection = (Connection) DriverManager.getConnection("jdbc:mysql://apontejaj.com:3306/Matheus_2019378?useSSL=false", "Matheus_2019378", "2019378");
 
+            PreparedStatement st = (PreparedStatement) connection
+                    .prepareStatement("Select empEmail, empPWD from Employee where empEmail=? and empPWD=?");
+
+            st.setString(1, userName);
+            st.setString(2, password);
+            ResultSet rs = st.executeQuery();
+            if (rs.next()) {
+
+                DVDSRENT ah = new DVDSRENT();
+                ah.setVisible(true);
+                dispose();
+
+                JOptionPane.showMessageDialog(loginButton, "You have successfully logged in");
+            } else {
+                JOptionPane.showMessageDialog(loginButton, "Wrong Username & Password");
+
+            }
+            
+
+        } 
+        catch (SQLException sqlException) {
+            sqlException.printStackTrace();
         }
-        if (e.getSource() == b4) {
-            PAYMENTFEEDBACK nc = new PAYMENTFEEDBACK() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-                }
-            };
-            nc.setVisible(true);
-            dispose();
-
-        } else {
-
-        }
+        
 
     }
 
