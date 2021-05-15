@@ -10,7 +10,9 @@
  */
 
 
-
+//we thought hard about a way to make a payment system and we didn't find the solution for the payment method,
+//so we just created the connection with the rent classes, 
+//loginpayment and that would be to insert the card and make the payment
 
 public class PAYMENTCONTROL {
 

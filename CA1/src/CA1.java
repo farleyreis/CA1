@@ -2,6 +2,7 @@
  *
  * @author farleyreis  & Matheus
  */
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -93,8 +94,8 @@ public class CA1 extends JPanel {
             // my old condition is in the SERVICEPROVIDER class, you can copy all code from the NewCliente class and put it in
             // from SERVICEPROVIDER to have the same design.
             else if (e.getSource() == button2) {
-//                PAYMENTVIEW nc = new PAYMENTVIEW();
-//                nc.setVisible(true);
+                ZCHECKOUT nc = new ZCHECKOUT();
+                nc.setVisible(true);
 
             }
                  else if (e.getSource() == button3) {

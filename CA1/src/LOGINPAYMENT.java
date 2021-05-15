@@ -323,14 +323,14 @@ public class LOGINPAYMENT extends JFrame implements ActionListener {
 
         }
         if (e.getSource() == singUp) {
-//            PAYMENTVIEW nc = new PAYMENTVIEW() {
-//                @Override
-//                public void actionPerformed(ActionEvent e) {
-//
-//                }
-//            };
-//            nc.setVisible(true);
-//            dispose();
+            NCLIENT nc = new NCLIENT() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+
+                }
+            };
+            nc.setVisible(true);
+            dispose();
 
         }
         if (e.getSource() == singIn) {

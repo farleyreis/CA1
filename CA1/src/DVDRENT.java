@@ -3,6 +3,7 @@
  *
  * @author farleyreis  & Matheus
  */
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -22,7 +23,7 @@ public class DVDRENT extends JFrame implements ActionListener {
     JButton backToMovies = new JButton("MOST RENTED");
     JButton creat_an_account = new JButton("CREATE AN ACCOUNT");
     JButton backButton = new JButton("BACK MENU");
-    JButton checkoutButton = new JButton("CHECKOUT");
+    //JButton checkoutButton = new JButton("ZCHECKOUT");
     JButton cancelButton = new JButton("CANCEL");
     JLabel background;
     
@@ -84,7 +85,7 @@ public class DVDRENT extends JFrame implements ActionListener {
         backToMovies.setBounds(400, 10, 300, 100);
         creat_an_account.setBounds(700,10,300,100);
         backButton.setBounds(1000,10,300,100);
-        checkoutButton.setBounds(50, 650, 200,50);
+        //checkoutButton.setBounds(50, 650, 200,50);
         cancelButton.setBounds(50,700,200,50);
                
         choise1.setBounds(25,110,240,350);    
@@ -113,7 +114,7 @@ public class DVDRENT extends JFrame implements ActionListener {
         container.add(backToMovies);
         container.add(creat_an_account);
         container.add(backButton);
-        container.add(checkoutButton);
+        //container.add(checkoutButton);
         container.add(cancelButton);
         container.add(choise1);
         container.add(choise2);
@@ -134,8 +135,18 @@ public class DVDRENT extends JFrame implements ActionListener {
         backToMovies.addActionListener(this);
         creat_an_account.addActionListener(this);
         backButton.addActionListener(this);
-        checkoutButton.addActionListener(this);
+        choise1.addActionListener(this);
         cancelButton.addActionListener(this);
+        choise2.addActionListener(this);
+        choise3.addActionListener(this);
+        choise4.addActionListener(this);
+        choise5.addActionListener(this);
+        choise6.addActionListener(this);
+        choise7.addActionListener(this);
+        choise8.addActionListener(this);
+        choise9.addActionListener(this);
+        choise10.addActionListener(this);
+        
 
     }
 
@@ -148,14 +159,14 @@ public class DVDRENT extends JFrame implements ActionListener {
 //            dispose();
 
         }
-        if (e.getSource() == backToMovies) {
+       else if (e.getSource() == backToMovies) {
             RENTEDDISPLAY nc = new RENTEDDISPLAY() {
             };
             nc.setVisible(true);
             dispose();
 
         }
-        if (e.getSource() == creat_an_account) {
+        else if  (e.getSource() == creat_an_account) {
             NCLIENT nc = new NCLIENT() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
@@ -166,15 +177,77 @@ public class DVDRENT extends JFrame implements ActionListener {
             dispose();
 
         }
-        if (e.getSource() == backButton) {
+       else if  (e.getSource() == backButton) {
             CA1 nc = new CA1() {
             };
             nc.setVisible(true);
             dispose();
 
         }
-        if (e.getSource() == checkoutButton) {
-            LOGINPAYMENT nc = new LOGINPAYMENT() {
+        else if  (e.getSource() == choise1) {
+            ZCHECKOUT nc = new ZCHECKOUT() {
+            };
+            nc.setVisible(true);
+            dispose();
+
+        }
+               else if  (e.getSource() == choise2) {
+            ZCHECKOUT1 nc = new ZCHECKOUT1() {
+            };
+            nc.setVisible(true);
+            dispose();
+
+        }
+                      else if (e.getSource() == choise3) {
+            ZCHECKOUT2 nc = new ZCHECKOUT2() {
+            };
+            nc.setVisible(true);
+            dispose();
+
+        }
+                               else if  (e.getSource() == choise4) {
+            ZCHECKOUT3 nc = new ZCHECKOUT3() {
+            };
+            nc.setVisible(true);
+            dispose();
+
+        }
+                                       else if (e.getSource() == choise5) {
+            ZCHECKOUT4 nc = new ZCHECKOUT4() {
+            };
+            nc.setVisible(true);
+            dispose();
+
+        }
+                                                else if  (e.getSource() == choise5) {
+            ZCHECKOUT5 nc = new ZCHECKOUT5() {
+            };
+            nc.setVisible(true);
+            dispose();
+
+        }
+                                                       else if  (e.getSource() == choise6) {
+            ZCHECKOUT nc = new ZCHECKOUT() {
+            };
+            nc.setVisible(true);
+            dispose();
+
+        }
+                                                                if (e.getSource() == choise7) {
+            ZCHECKOUT nc = new ZCHECKOUT() {
+            };
+            nc.setVisible(true);
+            dispose();
+
+        }        if (e.getSource() == choise2) {
+            ZCHECKOUT nc = new ZCHECKOUT() {
+            };
+            nc.setVisible(true);
+            dispose();
+
+        }
+                if (e.getSource() == choise2) {
+            ZCHECKOUT nc = new ZCHECKOUT() {
             };
             nc.setVisible(true);
             dispose();
